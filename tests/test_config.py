@@ -10,7 +10,8 @@ def test_env_vars():
 
 def test_config(default_app):
     assert (
-        default_app.config["SQLALCHEMY_DATABASE_URI"] == "sqlite:///db.sqlite3"
+        default_app.config["SQLALCHEMY_DATABASE_URI"]
+        == "sqlite:///db.sqlite3"
     ), (
         "Проверьте, что конфигурационному ключу SQLALCHEMY_DATABASE_URI "
         "присвоено значение с настройками для подключения базы данных"

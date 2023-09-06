@@ -18,10 +18,10 @@ def index_view():
         else:
             url_map = URLMap(
                 original=form.original_link.data, short=short_url
-                )
+            )
             db.session.add(url_map)
             db.session.commit()
-            flash(f"Ваша новая ссылка готова:", "success-message")
+            flash("Ваша новая ссылка готова:", "success-message")
             flash(f"{short_url}", "result")
             return (
                 render_template(template, form=form, custom_id=short_url),
