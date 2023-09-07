@@ -29,7 +29,6 @@ def add_id():
                 "short_link": "http://localhost/" + url_map.to_dict()["short"],
             }
         ),
-        201,
     )
 
 
@@ -38,5 +37,4 @@ def get_id(short_id):
     url_map = URLMap.query.filter_by(short=short_id).first()
     if url_map:
         return jsonify(url=url_map.to_dict()["original"]), 200
-    else:
-        raise InvalidAPIUsage("Указанный id не найден", 404)
+    raise InvalidAPIUsage("Указанный id не найден", 404)
