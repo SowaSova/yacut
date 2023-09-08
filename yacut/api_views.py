@@ -26,8 +26,7 @@ def add_id():
         jsonify(
             {
                 "url": url_map.to_dict()["original"],
-                "short_link": "http://localhost/"
-                + url_map.to_dict()["short"],
+                "short_link": "http://localhost/" + url_map.to_dict()["short"],
             }
         ),
     )
