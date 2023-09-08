@@ -29,6 +29,7 @@ def add_id():
                 "short_link": "http://localhost/" + url_map.to_dict()["short"],
             }
         ),
+        201,  # Тесты требуют именно статус 201
     )
 
 
