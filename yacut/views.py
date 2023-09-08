@@ -12,16 +12,14 @@ def index_view():
     form = URLForm()
     if not form.validate_on_submit():
         return render_template(template, form=form)
-    
+
     short_url = form.custom_id.data or get_unique_short_id()
     url_map = URLMap.query.filter_by(short=short_url).first()
     if url_map:
         flash(f"Имя {short_url} уже занято!", "error-message")
         return render_template(template, form=form)
-    
-    url_map = URLMap(
-        original=form.original_link.data, short=short_url
-    )
+
+    url_map = URLMap(original=form.original_link.data, short=short_url)
     db.session.add(url_map)
     db.session.commit()
     flash("Ваша новая ссылка готова:", "success-message")
@@ -30,7 +28,6 @@ def index_view():
         render_template(template, form=form, custom_id=short_url),
         200,
     )
-
 
 
 @app.route("/<string:custom_id>", methods=["GET"])
